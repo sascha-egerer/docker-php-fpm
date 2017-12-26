@@ -18,6 +18,7 @@ RUN set -xe && \
         php7.0-dev \
     " && \
     apt-get install --no-install-recommends -y $buildDependencies libfreetype6-dev libxml2-dev libcurl4-openssl-dev libsqlite3-dev libssl-dev libpcre3-dev libpng-dev libjpeg-dev libzip-dev libedit-dev libltdl-dev libpaper-utils ghostscript curl xz-utils binutils blackfire-php php7.0-fpm php7.0-mbstring php7.0-gd php7.0-soap php7.0-zip php7.0-xml dh-php xml-core pkg-php-tools && \
+    apt-mark manual libfreetype6-dev libxml2-dev libcurl4-openssl-dev libsqlite3-dev libssl-dev libpcre3-dev libpng-dev libjpeg-dev libzip-dev libedit-dev libltdl-dev libpaper-utils ghostscript curl xz-utils binutils blackfire-php php7.0-fpm php7.0-mbstring php7.0-gd php7.0-soap php7.0-zip php7.0-xml dh-php xml-core pkg-php-tools && \
     pecl update-channels && \
     pecl channel-update pecl.php.net && \
     pecl install xdebug && \
