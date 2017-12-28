@@ -33,11 +33,11 @@ COPY php-fpm.conf /etc/php/7.2/fpm/pool.d/z_custom.conf
 
 RUN set -xe && \
     mkdir -p /var/www /run/php && \
-    phpenmod my_custom && \
     echo "zend_extension=xdebug.so\nxdebug.max_nesting_level=1500" >> /etc/php/7.2/mods-available/xdebug.ini && \
     # make the blackfire and xdebug config file writeable for www-data.
     # this is a bit insecure but ok in that case as this image should only be used in development
     chown -R www-data:www-data /var/www /run/php /etc/php/7.2/mods-available/blackfire.ini /etc/php/7.2/mods-available/xdebug.ini && \
+    phpenmod my_custom xdebug && \
     printf 'blackfire.agent_socket="${BLACKFIRE_SOCKET}"\n' >> /etc/php/7.2/mods-available/blackfire.ini && \
     echo "include=/etc/php/7.2/fpm/pool.d/*.conf" >> /etc/php/7.2/fpm/php-fpm.conf
 
