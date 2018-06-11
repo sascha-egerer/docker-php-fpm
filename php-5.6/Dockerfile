@@ -8,6 +8,7 @@ RUN set -xe && \
         software-properties-common \
         build-essential \
         php-pear \
+        gpg-agent \
     " && \
     apt-get install --no-install-recommends -y $buildDependencies curl && \
     curl -s https://packagecloud.io/gpg.key | apt-key add - && \
