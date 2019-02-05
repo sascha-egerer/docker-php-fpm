@@ -11,8 +11,8 @@ RUN set -xe && \
         gpg-agent \
     " && \
     apt-get install --no-install-recommends -y $buildDependencies curl && \
-    curl -s https://packagecloud.io/gpg.key | apt-key add - && \
-    echo "deb http://packages.blackfire.io/debian any main" | tee /etc/apt/sources.list.d/blackfire.list && \
+    curl -s https://packages.blackfire.io/gpg.key | APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE=DontWarn apt-key add - && \
+    echo "deb https://packages.blackfire.io/debian any main" | tee /etc/apt/sources.list.d/blackfire.list && \
     add-apt-repository ppa:ondrej/php && \
     apt-get update && \
     buildDependencies="$buildDependencies\
